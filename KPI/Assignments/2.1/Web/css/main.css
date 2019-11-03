@@ -1,0 +1,25 @@
+.content ul {
+	align-content: flex-end;
+}
+
+#menu li {
+	margin: 5px;
+	display: inline;
+}
+
+.post {
+	border: 1px #d3d3d3 solid;
+	padding: 20px;
+	display: flex;
+}
+
+.details, .body {
+	margin: 20px;
+}
+
+@media(min-width: 750px) {
+	.col {
+		width: 30%;
+		display: inline-block;
+	}
+}

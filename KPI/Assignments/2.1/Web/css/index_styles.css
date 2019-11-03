@@ -1,13 +1,13 @@
 body {
-  background-color: powderblue;
+	background-color: powderblue;
 }
 
 h1 {
-  color: purple;
+	color: purple;
 }
 
 h2 {
-  letter-spacing: 3px;
+	letter-spacing: 3px;
 }
 
 h3 {
@@ -23,7 +23,7 @@ div {
 }
 
 p {
-  color: green;
+	color: green;
 }
 
 ul {
@@ -49,10 +49,10 @@ table, tr, td {
 }
 
 img {
-  border: 1px solid #000000;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
+	border: 1px solid #000000;
+	border-radius: 4px;
+	padding: 5px;
+	width: 150px;
 }
 
 map {
