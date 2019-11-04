@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+	<meta charset="utf-8">
+	<title>Обробка події Change - зміна значення елемента</title>
+	<script>
+		function calculate_area(form) {
+			form.area.value = form.squre_side.value * form.squre_side.value
+		}
+	</script>
+</HEAD>
+<BODY>
+	<P>Обчислення площі квадрата</P>
+	<FORM name="form">
+		Сторона: <input type="text" size=7 name="squre_side"
+		onChange="calculate_area(form)"><br>
+		Площа квадрата: <input type="text" size=7 name="area"><br>
+		<input type="reset" value=Оновити>
+	</FORM>
+</BODY>
+</HTML> 
