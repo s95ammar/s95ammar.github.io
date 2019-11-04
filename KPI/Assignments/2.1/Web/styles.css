@@ -1,0 +1,61 @@
+body {
+	background-color: powderblue;
+}
+
+h1 {
+	color: purple;
+}
+
+h2 {
+	letter-spacing: 3px;
+}
+
+h3 {
+	text-decoration: underline;
+}
+
+div {
+	height:17px;
+	width:300px;
+	color:black;
+	border:2px solid;
+	text-align: center;
+}
+
+p {
+	color: green;
+}
+
+ul {
+	list-style-type: square
+}
+
+ol {
+	list-style-type: upper-roman;
+	list-style-position: inside;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, th {
+	border: 2px solid black;
+}
+
+table, tr, td {
+	text-align: center;
+	border: 1px solid black;
+}
+
+img {
+	border: 1px solid #000000;
+	border-radius: 4px;
+	padding: 5px;
+	width: 150px;
+}
+
+map {
+
+}
+
