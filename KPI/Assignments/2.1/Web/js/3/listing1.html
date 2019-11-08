@@ -3,14 +3,15 @@
 	<meta charset="utf-8">
 	<TITLE> Обчислення максимального значення</TITLE>
 	<script language="JavaScript">
-		function maxval (obj ){
-			var a = Number(obj.num1.value);
-			var b = Number(obj.num2.value);
-			var c = Number(obj.num3.value);
+		function maxval (form) {
+			var a = Number(form.num1.value);
+			var b = Number(form.num2.value);
+			var c = Number(form.num3.value);
 			var max=a
 			if (b > max) max=b
 				if (c > max) max=c
-					obj.res.value=max }
+					form.res.value=max
+			}
 			</script>
 		</HEAD>
 		<BODY>
