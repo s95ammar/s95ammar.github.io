@@ -1,7 +1,7 @@
  <HTML>
  <HEAD>
  	<meta charset="utf-8">
- 	<title>Перший сценарій в HTML-документі</title>
+ 	<title>Web lab 4.2</title>
  </HEAD>
  <BODY>
  	<h3>
@@ -9,23 +9,57 @@
  		<a href="listing1.html">listing1</a>
  		<a href="listing2.html">listing2</a>
  	</h3>
- 	<h4>Обчислення площі трикутника (використати подію focus) за заданими координатами трьох точок на площині</h4>
+ 	<h4>1. Обчислення площі трикутника (використати подію focus) за заданими координатами трьох точок на площині + onfocus</h4>
  	
- 	<FORM name="form">
+ 	<FORM name="form1">
  		Координати точок трикутника: 
  		а ( <input type="text" size=1 name="ax"> , <input type="text" size=1 name="ay"> ),
  		b ( <input type="text" size=1 name="bx"> , <input type="text" size=1 name="by"> ),
  		c ( <input type="text" size=1 name="cx"> , <input type="text" size=1 name="cy"> )
  		<br>
- 		Результат: <input type="text" size="1" id="result" onfocus="onFocus(form)">
+ 		Для отримання результату натисніть в текстове поле "Результат".
+ 		<br>
+ 		Результат: <input type="text" size="1" id="result1" onfocus="showTriangleArea(form1)">
  	</FORM>
+
+ 	<h4>2. Обчислення відстані від точки до початку координат + onselect</h4>
+ 	
+ 	<FORM name="form2">
+ 		Координати точки: 
+ 		( <input type="text" size=1 name="x"> , <input type="text" size=1 name="y" onselect="calcDistance(form2)"> )
+ 		<br>
+ 		Для отримання результату виділіть текст координати Y.
+ 		<br>
+ 		Результат: <input type="text" size="1" id="result2">
+ 	</FORM>
+
+	<h4>3. Обмін місцями значення двох введених змінних + onblur</h4>
+
+ 	<FORM name="form3">
+ 		Значення змінних: 
+ 		a = <input type="text" size=1 name="a" id="aField"> , b = <input type="text" size=1 name="b" id="bField" onblur ="swapVariables(form3)">
+ 		<br>
+ 		Для отримання результату зніміть фокус від поля другої змінної.
+ 		<br>
+ 	</FORM>
+
  	
  	<script>
- 		function onFocus(form) {
+ 		function showTriangleArea(form) {
 
- 			document.getElementById("result").value = Math.abs((form.ax.value * (form.by.value - form.cy.value) + form.bx.value * (form.cy.value - form.ay.value) + form.cx.value * (form.ay.value - form.by.value))/2);
- 			// document.getElementById("result").value = area;
+ 			document.getElementById("result1").value = Math.abs((form.ax.value * (form.by.value - form.cy.value) + form.bx.value * (form.cy.value - form.ay.value) + form.cx.value * (form.ay.value - form.by.value))/2);
  			
+ 		}
+
+ 		function calcDistance(form) {
+ 			document.getElementById("result2").value = Math.sqrt(Math.pow(form.x.value, 2) + Math.pow(form.y.value, 2))
+ 		}
+
+ 		function swapVariables(form) {
+ 			var a = form.a.value;
+ 			var b = form.b.value;
+ 			document.getElementById("aField").value = b;
+ 			document.getElementById("bField").value = a;
  		}
 
 
