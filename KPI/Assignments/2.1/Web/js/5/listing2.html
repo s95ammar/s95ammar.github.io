@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+	<meta charset="utf-8"> 
+	<TITLE>Зображення і обтікання текстом</TITLE>
+	<script>
+		function chpict(obj){
+			if ((obj.elements[0]).checked)
+				document.mypict.align="left"
+			else
+				document.mypict.align="right"
+		}
+		function rset(obj){
+			document.mypict.align="left"
+		}
+	</script>
+</HEAD>
+<BODY>
+	<p>Зображення і обтікання текстом</p>
+	<FORM name="form1">
+		Оберіть значення параметра вирівнювання і натисніть кнопку
+		<b>Переглянути</b>.<br>
+		<PRE>
+			<input type="radio" name="alg" checked value=ld>(left) вирівнювання вліво
+			<input type="radio" name="alg" value=rd>(right) вирівнювання вправо
+		</PRE>
+		<input type="button" value= "Переглянути" onclick="chpict(form1)">
+		<input type="reset" value="Скасувати" onclick="rset(form1)"> </FORM>
+		<TABLE bgcolor="F8F8FF">

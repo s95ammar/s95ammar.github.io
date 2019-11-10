@@ -83,9 +83,9 @@
 			var y = Number(form.y.value);
 			var quarter;
 			if (x > 0) {
-				if (y > 0) quarter = 1; else quarter = 4;
-			} else {
-				if (y > 0) quarter = 2; else quarter = 3;
+				if (y > 0) quarter = 1; else if (y < 0) quarter = 4;
+			} else if (x < 0) {
+				if (y > 0) quarter = 2; else if (y < 0) quarter = 3;
 			}
 			form.res.value = quarter;
 		}

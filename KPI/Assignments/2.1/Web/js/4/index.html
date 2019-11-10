@@ -10,9 +10,79 @@
  		<a href="listing2.html">listing2</a>
  	</h3>
 
- 	
- 	<script>
+	<h4>1. Вибор із трьох зображень одного, яке вставляється нижче цих трьох</h4>
 
- 	</script>
+	<img src="java.png" alt="java" height="50" onclick="setSelectedImg(this)">
+	<img src="kotlin.jpg" alt="kotlin" height="50" onclick="setSelectedImg(this)">
+	<img src="flutter.png" alt="flutter" height="50" onclick="setSelectedImg(this)">
+
+	<div id="underImages">
+		<img src="" id="selectedImg">
+	</div>
+
+	<h4>2. Ефект наближення</h4>
+
+	<img onmouseover="enlarg(this)" onmouseout="shrink(this)" src="kotlin.jpg" alt="kotlin" width="64" height="64">
+
+	<h4>3. Сценарій графічного горизонтального меню з появою стрілки над пунктом, на який наведено курсор</h4>
+	<div id ="arrowDiv">
+		
+	</div>
+	<div id = "menuDiv">
+		<a href="" onmouseover="showArrow(this.getBoundingClientRect().left, this.getBoundingClientRect().top)" onmouseout="removeArrow()">
+			<img src="java.png" height="40" name="pic1" alt="java">
+		</a>
+		<a href="" onmouseover="showArrow(this.getBoundingClientRect().left, this.getBoundingClientRect().top)" onmouseout="removeArrow()">
+			<img src="kotlin.jpg" height="40" name="pic1" alt="kotlin">
+		</a>
+		<a href="" onmouseover="showArrow(this.getBoundingClientRect().left, this.getBoundingClientRect().top)" onmouseout="removeArrow()">
+			<img src="flutter.png" height="40" name="pic1" alt="flutter">
+		</a>
+	</div>
+
+	<script>
+
+		function setSelectedImg(img) {
+			var newImg = document.getElementById("selectedImg");
+			newImg.src = img.src;
+			newImg.style.height = img.height;
+		}
+		
+		function enlarg(img) {
+			setDimentions(img, (img.height * 2), (img.width * 2));
+		}
+
+		function shrink(img) {
+			setDimentions(img, (img.height / 2), (img.width / 2));
+		}
+
+		function setDimentions(img, height, width) {
+			img.style.height = height + "px";
+			img.style.width = width + "px";
+
+		}
+
+		function showArrow(x, y) {
+			var img = document.createElement("img");
+			img.src = "arrow.jpg";
+			img.id = "arrow"
+			img.width = "15";
+			img.height = "15"
+			var menuDiv = document.getElementById("arrowDiv");
+			menuDiv.appendChild(img);
+			menuDiv.style.position = "absolute";
+			menuDiv.style.left = (x + 10) +'px';
+			menuDiv.style.top = (y - 45) +'px';
+		}
+
+		function removeArrow() {
+  			var arrow = document.getElementById("arrow");
+  			arrow.parentNode.removeChild(arrow);
+		}
+
+
+
+
+	</script>
  </BODY>
 </HTML> 
