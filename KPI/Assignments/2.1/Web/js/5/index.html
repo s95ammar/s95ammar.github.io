@@ -2,17 +2,72 @@
  <HEAD>
  	<meta charset="utf-8">
  	<title>Web lab 4.3</title>
- </HEAD>
- <BODY>
- 	<h3>
- 		<a href="../..">back</a>
- 		<a href="listing1.html">listing1</a>
- 		<a href="listing2.html">listing2</a>
- 	</h3>
-
-
 	<script>
 
+		function resizeHr(x, isChecked) {
+			var hr = document.getElementById("hr");
+			if (isChecked) hr.width = x;
+		}
+
+		function repositionHr(position, isChecked) {
+			var hr = document.getElementById("hr");
+			if (isChecked)
+				switch (position) {
+					case "left": hr.align = "left"; break;
+					case "center": hr.align = "center"; break;
+					case "right": hr.align = "right"; break;
+					default: window.alert("asf")
+				}
+		}
+
+		function send(form) {
+			var sex = form.sex.value
+			var age = form.age.value
+			var status = form.status.value
+			var result = "Отримані дані: \n    Стать: " + sex + "\n    Вік: " + age + "\n    Сімейне положення: " + status
+			window.alert(result)
+		}
+
 	</script>
+
+ </HEAD>
+ <BODY>
+	<h3>
+		<a href="../..">back</a>
+		<a href="listing1.html">listing1</a>
+		<a href="listing2.html">listing2</a>
+	</h3>
+
+	<h4>1. Зміна розмірів і положення горизонтальної лінії</h4>
+	Розміри
+	<input type="radio" name="size" value="100" onchange="resizeHr(this.value, checked)"> 100
+	<input type="radio" name="size" value="500" onchange="resizeHr(this.value, checked)"> 500
+	<input type="radio" name="size" value="1000" onchange="resizeHr(this.value, checked)"> 1000
+	<br>
+	Положення
+	<input type="radio" name="position" value="left" onchange="repositionHr(this.value, checked)"> Ліво
+	<input type="radio" name="position" value="center" onchange="repositionHr(this.value, checked)"> Центр
+	<input type="radio" name="position" value="right" onchange="repositionHr(this.value, checked)"> Право
+
+	<hr id="hr">
+
+	<h4>2. Анкета про стать, вік, сімейне положення особи, що передає ці дані в скрипт</h4>
+	<form name="form">
+		Стать:
+		<input type="radio" value="Чоловіча" name="sex"> Чоловіча
+		<input type="radio" value="Жіноча" name="sex"> Жіноча <br>
+		Вік:
+		<input type="radio" value="Less than 18" name="age"> Менше 18
+		<input type="radio" value="18-25" name="age"> 18 - 25
+		<input type="radio" value="25-35" name="age"> 25 - 30
+		<input type="radio" value="More than 35" name="age"> Більше 35 <br>
+		Сімейне положення:
+		<input type="radio" value="Неодружений(-на)" name="status"> Неодружений(-на)
+		<input type="radio" value="Одружений(-на)" name="status"> Одружений(-на)<br>
+		<input type="button" value="Відправити" name="submit" onclick="send(form)"> 
+    </form>
+
+
+
  </BODY>
 </HTML> 
