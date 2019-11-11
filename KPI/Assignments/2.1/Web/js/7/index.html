@@ -4,6 +4,26 @@
  	<title>Web lab 4.7</title>
 	<script>
 
+	function setTableBgColor(color) {
+		document.getElementById("table").style.backgroundColor = color;
+	}
+
+	function setCellBgColor(cellIndex, color) {
+	    var cells = document.getElementById("table").getElementsByTagName("td");
+	    cells[cellIndex].style.backgroundColor = color;
+	}
+
+	function setTableBackgroundImg(url) {
+		var table = document.getElementById("table");
+		table.setAttribute("background", url);
+		table.style.backgroundRepeat = "no-repeat";
+	}
+
+	function setCellBackgroundImg(cellIndex, url) {
+	    var cells = document.getElementById("table").getElementsByTagName("td");
+	    cells[cellIndex].setAttribute("background", url);
+	}
+
 
 	</script>
 
@@ -17,6 +37,71 @@
 
 	<h4>1. </h4>
 
+	<form name="form">
+		<table border="1" style="border-collapse:collapse" id="table">
+			<tr height = "50">
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+			</tr>
+			<tr height = "50">
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr height = "50">
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<br>
+		Table:
+		Select color:
+		<select name="colorTable" onchange="setTableBgColor(form.colorTable.value)">
+			<option value="transparent"></option>
+			<option value="#FF0000">Red</option>
+			<option value="#00FF00">Green</option>
+			<option value="#0000FF">Blue</option>
+		</select>
+		Select img:
+		<select name="imgTable" onchange="setTableBackgroundImg(form.imgTable.value)">
+			<option value=""></option>
+			<option value="kotlin.jpg">Kotlin</option>
+			<option value="java.png">Java</option>
+			<option value="flutter.png">Flutter</option>
+		</select>
+
+		<br>
+		Cell #
+		<select name="cellNumber">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+			<option value="4">5</option>
+			<option value="5">6</option>
+			<option value="6">7</option>
+			<option value="7">8</option>
+			<option value="8">9</option>
+		</select>
+		: Select color:
+		<select name="colorCell" onchange="setCellBgColor(form.cellNumber.value, form.colorCell.value)">
+			<option value="transparent"></option>
+			<option value="#FF0000">Red</option>
+			<option value="#00FF00">Green</option>
+			<option value="#0000FF">Blue</option>
+		</select>
+		Select img:
+		<select name="imgCell" onchange="setCellBackgroundImg(form.cellNumber.value, form.imgCell.value)">
+			<option value=""></option>
+			<option value="kotlin_mini.jpg">Kotlin</option>
+			<option value="java_mini.png">Java</option>
+			<option value="flutter_mini.png">Flutter</option>
+		</select>
+
+
+	</form>
 
  </BODY>
 </HTML> 
