@@ -4,6 +4,16 @@
  	<title>Web lab 4.7</title>
 	<script>
 
+	var price_tomatos = 10;
+	var price_apples = 20;
+	var price_lemons = 50;
+	var price_pineapples = 80;
+	var price_pumpkins = 5;
+	var price_peaches = 15;
+
+	var total_price = 0;
+
+
 	function setTableBgColor(color) {
 		document.getElementById("table").style.backgroundColor = color;
 	}
@@ -24,6 +34,37 @@
 	    cells[cellIndex].setAttribute("background", url);
 	}
 
+	function getPrice(product) {
+		var price;
+		switch(product) {
+			case "Tomatos": price = price_tomatos; break;
+			case "Apples": price = price_apples; break;
+			case "Lemons": price = price_lemons; break;
+			case "Pineapples": price = price_pineapples; break;
+			case "Pumpkins": price = price_pumpkins; break;
+			case "Peaches": price = price_peaches; break;
+		}
+		return price;
+
+	}
+
+	function assignPrice(product) {
+		document.getElementById("spanProductPrice").innerHTML = getPrice(product);
+	}
+
+	function addProduct(product, amount) {
+		if (amount > 0 && product != "") {
+			var product_price = getPrice(product);
+			var product_amount_price = product_price * amount;
+			
+			document.getElementById("divList").innerHTML += product + " " + amount + " * " + product_price + " = " + product_amount_price + "<br>";
+
+
+			total_price += product_amount_price;
+			document.getElementById("spanTotalPrice").innerHTML = total_price; 
+		}
+	}
+
 
 	</script>
 
@@ -35,9 +76,9 @@
 		<a href="listing2.html">listing2</a>
 	</h3>
 
-	<h4>1. </h4>
+	<h4>1. Colors and/or images can be applied to a table and/or its cells</h4>
 
-	<form name="form">
+	<form name="form1">
 		<table border="1" style="border-collapse:collapse" id="table">
 			<tr height = "50">
 				<td width="50"></td>
@@ -58,14 +99,14 @@
 		<br>
 		Table:
 		Select color:
-		<select name="colorTable" onchange="setTableBgColor(form.colorTable.value)">
+		<select name="colorTable" onchange="setTableBgColor(form1.colorTable.value)">
 			<option value="transparent"></option>
 			<option value="#FF0000">Red</option>
 			<option value="#00FF00">Green</option>
 			<option value="#0000FF">Blue</option>
 		</select>
 		Select img:
-		<select name="imgTable" onchange="setTableBackgroundImg(form.imgTable.value)">
+		<select name="imgTable" onchange="setTableBackgroundImg(form1.imgTable.value)">
 			<option value=""></option>
 			<option value="kotlin.jpg">Kotlin</option>
 			<option value="java.png">Java</option>
@@ -86,22 +127,50 @@
 			<option value="8">9</option>
 		</select>
 		: Select color:
-		<select name="colorCell" onchange="setCellBgColor(form.cellNumber.value, form.colorCell.value)">
+		<select name="colorCell" onchange="setCellBgColor(form1.cellNumber.value, form1.colorCell.value)">
 			<option value="transparent"></option>
 			<option value="#FF0000">Red</option>
 			<option value="#00FF00">Green</option>
 			<option value="#0000FF">Blue</option>
 		</select>
 		Select img:
-		<select name="imgCell" onchange="setCellBackgroundImg(form.cellNumber.value, form.imgCell.value)">
+		<select name="imgCell" onchange="setCellBackgroundImg(form1.cellNumber.value, form1.imgCell.value)">
 			<option value=""></option>
 			<option value="kotlin_mini.jpg">Kotlin</option>
 			<option value="java_mini.png">Java</option>
 			<option value="flutter_mini.png">Flutter</option>
 		</select>
 
+	</form>
+
+	<h4>2. Shopping list</h4>
+
+	<form name="form2">
+		<select name="product" onchange="assignPrice(form2.product.value)">
+			
+			<option value="" disabled selected hidden>Select product</option>
+			<option value="Tomatos">Tomatos</option>
+			<option value="Apples">Apples</option>
+			<option value="Lemons">Lemons</option>
+			<option value="Pineapples">Pineapples</option>
+			<option value="Pumpkins">Pumpkins</option>
+			<option value="Peaches">Peaches</option>
+
+		</select>
+	
+		<span>Unit price: </span><span id="spanProductPrice">0</span>
+		<input type="text" name="amount" placeholder="Amount" size="3">
+		<input type="button" value="Add to list" onclick="addProduct(form2.product.value, form2.amount.value)">
 
 	</form>
+
+	<div id="divList">
+		
+	</div>
+	<hr width="350" align = "left">
+	<div id="divTotalPrice">
+		<span>Total = </span><span id="spanTotalPrice">0</span>
+	</div>
 
  </BODY>
 </HTML> 
