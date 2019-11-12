@@ -3,13 +3,15 @@
  	<meta charset="utf-8">
  	<title>Web lab 4.7</title>
 	<script>
-
-	var price_tomatos = 10;
-	var price_apples = 20;
-	var price_lemons = 50;
-	var price_pineapples = 80;
-	var price_pumpkins = 5;
-	var price_peaches = 15;
+	
+	var productMap = new Map([
+		["Tomatos", 10],
+		["Apples", 20],
+		["Lemons", 50],
+		["Pineapples", 80],
+		["Pumpkins", 5],
+		["Peaches", 15]
+	]);
 
 	var total_price = 0;
 
@@ -34,27 +36,13 @@
 	    cells[cellIndex].setAttribute("background", url);
 	}
 
-	function getPrice(product) {
-		var price;
-		switch(product) {
-			case "Tomatos": price = price_tomatos; break;
-			case "Apples": price = price_apples; break;
-			case "Lemons": price = price_lemons; break;
-			case "Pineapples": price = price_pineapples; break;
-			case "Pumpkins": price = price_pumpkins; break;
-			case "Peaches": price = price_peaches; break;
-		}
-		return price;
-
-	}
-
 	function assignPrice(product) {
-		document.getElementById("spanProductPrice").innerHTML = getPrice(product);
+		document.getElementById("spanProductPrice").innerHTML = productMap.get(product);
 	}
 
 	function addProduct(product, amount) {
 		if (amount > 0 && product != "") {
-			var product_price = getPrice(product);
+			var product_price = productMap.get(product);
 			var product_amount_price = product_price * amount;
 			
 			document.getElementById("divList").innerHTML += product + " " + amount + " * " + product_price + " = " + product_amount_price + "<br>";
