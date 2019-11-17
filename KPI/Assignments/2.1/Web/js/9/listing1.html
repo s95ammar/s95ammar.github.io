@@ -1,0 +1,26 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<TITLE>Визначення часу на клієнті</TITLE>
+ 	<script language="JavaScript">
+ 		function c1(obj){
+ 			var t=new Date()
+ 			var h=t.getHours()
+ 			var m=t.getMinutes()
+ 			var s=t.getSeconds()
+ 			var res=""
+ 			if (h < 10){ res += "0" + h } else { res += h}
+ 				if (m < 10){ res += ":0"+m } else { res += ":"+m}
+ 					if (s < 10){ res += ":0" + s } else { res += ":"+s}
+ 						obj.rest.value = res
+		}
+	</script>
+</HEAD>
+<BODY bgcolor="#FFFFCC">
+	При натисканні кнопки <b>Час</b> ви дізнаєтесь поточний час
+	<FORM name="form1">
+		<input type="button" name=butt value="Час" onClick="c1(form1)">
+		<input type="text" size=10 name="rest"><br>
+	</FORM>
+</BODY>
+</HTML> 

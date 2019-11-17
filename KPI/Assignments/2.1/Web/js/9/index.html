@@ -1,0 +1,119 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<title>Web lab 4.6</title>
+	<script>
+
+		var javaBaseCost = Number(10000);
+		var kotlinBaseCost = Number(12000);
+		var flutterBaseCost = Number(8000);
+
+
+		function getLengthMultiplier() {
+			var lengths = [form.elements[3], form.elements[4], form.elements[5]];
+			var lengthMultiplier;
+			lengths.forEach( length => {
+				if (length.checked)
+					if (length.value == 30) lengthMultiplier = 1;
+					else if (length.value == 45) lengthMultiplier = 1.5;
+					else if (length.value == 60) lengthMultiplier = 2;
+			});
+			return lengthMultiplier;
+		}
+
+		function getLangMultiplier() {
+			var languages = [form.elements[6], form.elements[7], form.elements[8]];
+			var langMultiplier;
+			languages.forEach( language => {
+				if (language.checked) 
+					switch (language.value) {
+						case "en": langMultiplier = 1; break;
+						case "ru": langMultiplier = 1.1; break;
+						case "ua": langMultiplier = 1.2; break;
+					}
+			});
+			return langMultiplier;
+		}
+
+		function getRepFormCost() {
+			var repForms = [form.elements[9], form.elements[10], form.elements[11]];
+			var repFormCost;
+			repForms.forEach( repForm => {
+				if (repForm.checked)
+					if (repForm.value == 1) repFormCost = 100;
+					else if (repForm.value == 2) repFormCost = 200;
+					else if (repForm.value == 3) repFormCost = 300;
+			});
+			return repFormCost;
+		}
+
+		function getCoursePrice(checked, baseCost) {
+			var cost = 0;
+			if (checked)
+				cost = baseCost * getLengthMultiplier() * getLangMultiplier() + getRepFormCost();
+			return cost;
+		}
+
+		function getCoursePriceMsg(checked, name, cost) {
+			var result = "";
+			if (checked)
+				result += "Вартість курсу " + name + " = " + cost + ". ";
+			return result;
+		}
+
+		function calc() {
+			var courses = [form.elements[0], form.elements[1], form.elements[2]];
+
+			var javaCost = getCoursePrice(courses[0].checked, javaBaseCost);
+			var kotlinCost = getCoursePrice(courses[1].checked, kotlinBaseCost);
+			var flutterCost = getCoursePrice(courses[2].checked, flutterBaseCost);
+			
+			var result ="";
+			result += getCoursePriceMsg(courses[0].checked, "Java", javaCost);
+			result += getCoursePriceMsg(courses[1].checked, "Kotlin", kotlinCost);
+			result += getCoursePriceMsg(courses[2].checked, "Flutter", flutterCost);
+
+			var totalCost = javaCost + kotlinCost + flutterCost;
+			result += "Загальна вартість = " + totalCost;
+			document.getElementById("result").value = result;
+
+		}
+
+	</script>
+
+ </HEAD>
+ <BODY>
+	<h3>
+		<a href="../..">back</a>
+		<a href="listing1.html">listing1</a>
+		<a href="listing2.html">listing2</a>
+	</h3>
+
+	<h4>1. Анкета слухача курсів</h4>
+		<form name="form">
+			Курс:<br>
+			<input type="checkbox" name="course" value="Java">Java<br>
+			<input type="checkbox" name="course" value="Kotlin">Kotlin<br>
+			<input type="checkbox" name="course" value="Flutter">Flutter<br>
+			<br>Тривалість (Години):<br>
+			<input type="radio" name="length" value=30 checked="true">30<br>
+			<input type="radio" name="length" value=45>45<br>
+			<input type="radio" name="length" value=60>60<br>
+			<br>Мова:<br>
+			<input type="radio" name="lang" value="en" checked="true">Англійська<br>
+			<input type="radio" name="lang" value="ru">Російська<br>
+			<input type="radio" name="lang" value="ua">Українська<br>
+			<br>Форма звітності:<br>
+			<input type="radio" name="repForm" value=1 checked="true">1<br>
+			<input type="radio" name="repForm" value=2>2<br>
+			<input type="radio" name="repForm" value=3>3<br>
+
+			<input type="button" value="Показати вартість" onClick="calc()">
+			<input type="text" id="result" size=100>
+			<input type="reset" value="Скасувати">
+ 		</form>
+
+
+
+ </BODY>
+</HTML> 

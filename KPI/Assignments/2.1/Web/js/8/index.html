@@ -4,6 +4,48 @@
  	<title>Web lab 4.8</title>
 	<script>
 		
+		function showReversed(input) {
+			var spanReversedNumber = document.getElementById("span_reversed_number")
+			if (input > 0) {
+				var reversedNumber = "";
+				for (var i = input.length - 1; i >= 0; i--) reversedNumber += input[i]
+				spanReversedNumber.innerHTML = reversedNumber
+			} else if (input == "") spanReversedNumber.innerHTML = ""
+		}
+
+		function calculateWinnersAmount() {
+			var amount = 0
+			var ticketFirstNumber = 0
+			var ticketLastNumber = 999999			
+			for (var i = ticketFirstNumber; i < ticketLastNumber; i++) {
+				var firstThree = i.toString().substring(0, 3)
+				var lastThree = i.toString().substring(3, 6)
+				if (getSumOfSubnumbers(firstThree) == getSumOfSubnumbers(lastThree)) amount++
+			}
+			document.getElementById("span_number_of_winners").innerHTML = amount
+		}
+
+		function getSumOfSubnumbers(numberString) {
+			var result = 0
+			for (var i = 0; i < numberString.length; i++) result += Number(numberString.charAt(i))
+			return result
+		}
+
+
+		function findFactors(num) {
+			if (num > 0) {
+				var factor = 1
+				var factors = []
+				var factorCount = 0
+				while (factor <= num) {
+					if (num % factor == 0) {
+						factors.push(factor)
+					}
+					factor++
+				}
+				document.getElementById("span_hcf").innerHTML = factors
+			}
+		}
 
 	</script>
 
@@ -15,8 +57,32 @@
 		<a href="listing2.html">listing2</a>
 	</h3>
 
-	<h4>1. </h4>
+	<div>
+		<h4>1. Number reverse</h4>
+		<input type="text" name="number" oninput="showReversed(this.value)">
+		<br>
+		<span>Reversed number: </span><span id="span_reversed_number"></span>
+	</div>
 
+	<div>
+		<h4>2. Lucky tickets</h4>
+		<input type="button" value="Show number of winners" onclick="calculateWinnersAmount()">
+		<br>
+		<span>Number of winners: </span><span id="span_number_of_winners"></span>
+
+
+	</div>
+
+	<div>
+		<h4>3. Number factors</h4>
+		<form name="form_factors">
+			<input type="text" size="5" placeholder="Number" name="input_number">
+			<br>
+			<input type="button" value="Show factors" onclick="findFactors(form_factors.input_number.value)">
+			<br>
+			<span>Factors: </span><span id="span_hcf"></span>
+		</form>
+	</div>
 
  </BODY>
 </HTML> 

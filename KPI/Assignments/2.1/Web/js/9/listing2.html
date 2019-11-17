@@ -1,0 +1,49 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<TITLE> В які місяці року 13 число – п’ятниця?</TITLE>
+ 	<script language="JavaScript">
+ 		function def13(obj){
+ 			var t= new Date()
+ 			var c=""
+ 			var y=Number(obj.fye.value)
+ 			for (var i=0;i<=11;i++){
+ 				t.setYear(y)
+ 				t.setMonth(i)
+ 				t.setDate(13)
+ 				if (t.getDay()==5){
+ 					с = c+ fmon(i)+ "\r\n"
+ 				}
+ 			}
+ 			obj.res.value = с
+ 		}
+ 		function fmon(mont){
+ 			var s
+ 			switch (mont){
+ 				case 0: s="січень"; break;
+ 				case 1: s="лютий"; break;
+ 				case 2: s="березень"; break;
+ 				case 3: s="квітень"; break;
+ 				case 4: s="травень"; break;
+ 				case 5: s="червень"; break;
+ 				case 6: s="липень"; break;
+ 				case 7: s="серпень"; break; 
+ 				case 8: s="вересень"; break;
+ 				case 9: s="жовтень"; break;
+ 				case 10: s="листопад"; break;
+ 				case 11: s="грудень"; break;
+ 			}
+ 			return s
+ 		}
+ 	</script>
+ </HEAD>
+ <BODY bgcolor="#FFFFCC">
+ 	<h4> В які місяці року 13 число – п’ятниця?</h4>
+ 	<FORM name="form1">
+ 		Вкажіть рік: <input type="text" size=8 name="fye" >
+ 		<input type="button" value="Знaйти" onClick="def13(form1)"><br>
+ 		<textarea Cols=30 rows=10 name=res></textarea><br>
+ 		<input type="reset" value="Скасувати">
+ 	</FORM>
+ </BODY>
+</HTML>
