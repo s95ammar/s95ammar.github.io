@@ -12,9 +12,8 @@
 		const ERROR_PHONE_SHORT = "Phone number too short"
 
 		function validateName(name) {
-			name = name.trim()
-			if (name.length == 0 || name.split(" ").length < 2) showError("span_error_name", ERROR_NAME_NOT_PROVIDED)
-			else if (!isAllLetrers(name)) showError("span_error_name", ERROR_NAME_INVALID_CHARS)
+			if (name.trim().split(" ").length < 2) showError("span_error_name", ERROR_NAME_NOT_PROVIDED)
+			else if (!isOnlyLettersAndSpaces(name)) showError("span_error_name", ERROR_NAME_INVALID_CHARS)
 			else showInputValid("span_error_name")
 		}
 
@@ -31,7 +30,7 @@
 			else showInputValid("span_error_phone")
 		}
 
-		function isAllLetrers(str) {
+		function isOnlyLettersAndSpaces(str) {
 			for (var i = 0; i < str.length; i++) if (!str[i].match(/[a-z]/i) && str[i] != " ") return false
 			return true
 		}
