@@ -4,6 +4,56 @@
  	<title>Web lab 4.9</title>
 	<script>
 
+		function calcWeekNum(day, month, year) {
+			if (isDateValid(day, month - 1, year)) {
+				var days = 0
+				for (var i = 1; i < month; i++) {
+					days += daysInMonth(i, year)
+				}
+				days += Number(day)
+				var weekNum = days / 7
+				if (days % 7 > 0) weekNum++
+				weekNum = (parseInt(weekNum, 10))
+				document.getElementById("span_week_num").innerHTML = weekNum
+			} else {
+				document.getElementById("span_week_num").innerHTML = "invalid input"
+			}
+		}
+
+		function isDateValid(day, month, year) {
+			if (year > 0)
+				if (month >= 0 && month < 12)
+					if (day > 0 && day <= daysInMonth(month + 1, year))
+						return true
+			return false
+		}
+
+		function daysInMonth (month, year) {
+		    return new Date(year, month, 0).getDate();
+		}
+
+		function showZodiac(day, month, year) {
+				document.getElementById("span_zodiac").innerHTML = getZodiac(day, month, year)
+		}
+
+		function getZodiac(day, month, year) {
+			if (isDateValid(day, month - 1, year))
+				if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) return "capricorn"
+				else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) return "aquarius"
+				else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "pisces"
+				else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) return "aries"
+				else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) return "taurus"
+				else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "gemini"
+				else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) return "cancer"
+				else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) return "leo"
+				else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) return "virgo"
+				else if ((month == 9 && day >= 24) || (month == 10 && day <= 22)) return "libra"
+				else if ((month == 10 && day >= 23) || (month == 11 && day <= 22)) return "scorpio"
+				else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) return "sagitarius"
+			return "invalid input"    
+
+		}
+
 	</script>
 
  </HEAD>
@@ -13,7 +63,31 @@
 		<a href="listing1.html">listing1</a>
 		<a href="listing2.html">listing2</a>
 	</h3>
-	
+
+	<div>
+		<h4>1. Week number. 2. Zodiac sign</h4>
+
+		<form name="form_week_number">
+			<input type="text" name="day" placeholder="day" size="3">
+			<input type="text" name="month" placeholder="month" size="3">
+			<input type="text" name="year" placeholder="year" size="3">
+			<input type="button" value="Calculate week number" onclick=
+				"calcWeekNum(form_week_number.day.value, form_week_number.month.value, form_week_number.year.value)">
+			<input type="button" value="What's my Zodiac" onclick=
+			"showZodiac(form_week_number.day.value, form_week_number.month.value, form_week_number.year.value)">
+			<br>
+			<span>Week number: </span><span id="span_week_num"></span>
+			<br>
+			<span>Zodiac: </span><span id="span_zodiac"></span>
+		</form>
+		
+	</div>
+
+	<div>
+		<!-- TODO: 3 -->
+
+		<h4> 3. </h4>
+	</div>
 
  </BODY>
 </HTML> 

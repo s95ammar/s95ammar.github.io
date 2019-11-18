@@ -5,7 +5,7 @@
 	<script>
 		
 		function calcWords(text) {
-			document.getElementById("span_word_count").innerHTML = text.split(" ").length
+			document.getElementById("span_word_count").innerHTML = getTrimmedText(text).split(" ").length
 		}
 
 		function replaceWords(text, oldWord, newWord) {
@@ -28,21 +28,13 @@
 
 		function getTrimmedText(text) {
 			var textArr = text.split(" ")
-			console.log(textArr)
 			var trimmedText = ""
 			for (var i = 0; i < textArr.length; i++) {
-				if (textArr[i] != "") {
-					console.log(i + ", " + (textArr[i]))
+				if (textArr[i] != "")
 					trimmedText += textArr[i]
-					console.log(trimmedText + ", " + i + ", " + (i != textArr.length - 1) + ", " + (textArr[i + 1] != "") +
-						", [i+1] = '" + textArr[i + 1] + "'")
-
-				}
 				// if (not last word && next word isn't blank && not first word/space to be added)
 				if ((i != textArr.length - 1) && (textArr[i + 1] != "") && trimmedText.length > 0)
-				trimmedText+= " "
-				console.log(trimmedText)
-
+					trimmedText+= " "
 			}
 			return trimmedText
 		}

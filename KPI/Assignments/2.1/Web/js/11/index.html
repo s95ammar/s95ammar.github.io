@@ -1,0 +1,67 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<title>Web lab 4.11</title>
+	<script>
+		var numbers = []
+
+		function addNumber(field) {
+			var num = field.value
+			if (!isNaN(num)) { // if num is a number
+				numbers.push(num)
+				document.getElementById("span_numbers").innerHTML = numbers
+			} else {
+				alert("invalid input")
+			}
+			field.value = ""
+			field.focus()
+		}
+
+		function showHowManyPositiveNumbers() {
+			var posNums = 0
+			numbers.forEach( num => { if (num > 0) posNums++ })
+			document.getElementById("span_positive_numbers").innerHTML = posNums
+		}
+
+		function findMax() {
+			var max = numbers[0]
+			numbers.forEach( num => { if (num > max) max = num })
+			document.getElementById("span_max").innerHTML = max
+
+		}
+
+	</script>
+
+ </HEAD>
+ <BODY>
+	<h3>
+		<a href="../..">back</a>
+		<a href="listing1.html">listing1</a>
+		<a href="listing2.html">listing2</a>
+	</h3>
+
+	<div>
+		<!-- TODO: 1 -->
+
+		<h4>1. Animation</h4>	 	
+	</div>
+
+	<div>
+		<h4>2. Number of positive numbers. 3. Find max</h4>
+		<form name="form">
+			<input type="text" name="num" size="2">
+			<input type="button" value="Add number" onclick="addNumber(form.num)">
+			<input type="button" value="Calculate number of positive numbers" onclick="showHowManyPositiveNumbers()">
+			<input type="button" value="Find max" onclick="findMax()">
+			<br>
+			<span>Numbers to proccess: </span><span id="span_numbers"></span>
+			<br>
+			<span>Number of positive numbers: </span><span id="span_positive_numbers"></span>
+			<br>
+			<span>Max: </span><span id="span_max"></span>
+		</form>
+	</div>
+
+
+ </BODY>
+</HTML> 
