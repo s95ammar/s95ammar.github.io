@@ -3,7 +3,40 @@
  	<meta charset="utf-8">
  	<title>Web lab 4.11</title>
 	<script>
+		var imagesSrc = ["progress_bar_1.jpg", "progress_bar_2.jpg", "progress_bar_3.jpg", "progress_bar_4.jpg"]
+		var animationAllowed = true
+		var count = 0
 		var numbers = []
+
+		function allowAndDoAnimation() {
+			animationAllowed = true
+			doAnimation()
+		}
+
+		function doAnimation() {
+			if (animationAllowed == true) {
+				var img = document.getElementById("img_progress_bar")
+				img.src = imagesSrc[count++]
+				setTimeout(doAnimation, 100)
+				if (count == 4) count = 0
+			}
+		}
+
+		function stopAnimation() {
+			animationAllowed = false
+		}
+
+		function changeImg(img) {
+			console.log("changeImg")
+			var newSrc = ""
+			switch(img.src) {
+				case "progress_bar_1.jpg": newSrc = "progress_bar_2.jpg"; break;
+				case "progress_bar_2.jpg": newSrc = "progress_bar_3.jpg"; break;
+				case "progress_bar_3.jpg": newSrc = "progress_bar_4.jpg"; break;
+				case "progress_bar_4.jpg": newSrc = "progress_bar_1.jpg"; break;
+			}
+			img.src = newSrc
+		}
 
 		function addNumber(field) {
 			var num = field.value
@@ -41,9 +74,12 @@
 	</h3>
 
 	<div>
-		<!-- TODO: 1 -->
-
-		<h4>1. Animation</h4>	 	
+		<h4>1. Animation</h4>
+		<img src="progress_bar_1.jpg" id="img_progress_bar">
+		<br>
+		<br>
+		<input type="button" value="Start animation" onclick="allowAndDoAnimation()">
+		<input type="button" value="Stop animation" onclick="stopAnimation()">
 	</div>
 
 	<div>

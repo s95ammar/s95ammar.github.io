@@ -16,7 +16,7 @@
 				weekNum = (parseInt(weekNum, 10))
 				document.getElementById("span_week_num").innerHTML = weekNum
 			} else {
-				document.getElementById("span_week_num").innerHTML = "invalid input"
+				document.getElementById("span_week_num").innerHTML = "invalid date"
 			}
 		}
 
@@ -33,7 +33,7 @@
 		}
 
 		function showZodiac(day, month, year) {
-				document.getElementById("span_zodiac").innerHTML = getZodiac(day, month, year)
+			document.getElementById("span_zodiac").innerHTML = getZodiac(day, month, year)
 		}
 
 		function getZodiac(day, month, year) {
@@ -50,7 +50,34 @@
 				else if ((month == 9 && day >= 24) || (month == 10 && day <= 22)) return "libra"
 				else if ((month == 10 && day >= 23) || (month == 11 && day <= 22)) return "scorpio"
 				else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) return "sagitarius"
-			return "invalid input"    
+			return "invalid date"    
+		}
+
+		function showYearEasternNameAndColor(day, month, year) {
+		    const animals = [
+				"Rat",
+				"Ox",
+				"Tiger",
+				"Rabbit",
+				"Dragon",
+				"Snake",
+				"Horse",
+				"Sheep",
+				"Monkey",
+				"Rooster",
+				"Dog",
+				"Pig",
+		    ]
+
+    		const colors = ["green", "red", "yellow", "white", "black"]
+    		if (isDateValid(day, month - 1, year)) {
+				document.getElementById("span_eastern_year").innerHTML = animals[year%animals.length]
+				document.getElementById("span_eastern_year").style.color = colors[year%colors.length]
+    		} else {
+				document.getElementById("span_eastern_year").innerHTML = "Invalid date"
+				document.getElementById("span_eastern_year").style.color = "black"
+
+    		}
 
 		}
 
@@ -65,7 +92,7 @@
 	</h3>
 
 	<div>
-		<h4>1. Week number. 2. Zodiac sign</h4>
+		<h4>1. Week number. 2. Zodiac sign. 3. Eastern year</h4>
 
 		<form name="form_week_number">
 			<input type="text" name="day" placeholder="day" size="3">
@@ -75,18 +102,16 @@
 				"calcWeekNum(form_week_number.day.value, form_week_number.month.value, form_week_number.year.value)">
 			<input type="button" value="What's my Zodiac" onclick=
 			"showZodiac(form_week_number.day.value, form_week_number.month.value, form_week_number.year.value)">
+			<input type="button" value="Show eastern year" onclick=
+			"showYearEasternNameAndColor(form_week_number.day.value, form_week_number.month.value, form_week_number.year.value)">
 			<br>
 			<span>Week number: </span><span id="span_week_num"></span>
 			<br>
 			<span>Zodiac: </span><span id="span_zodiac"></span>
+			<br>
+			<span>Eastern year: </span><span id="span_eastern_year"></span>
 		</form>
 		
-	</div>
-
-	<div>
-		<!-- TODO: 3 -->
-
-		<h4> 3. </h4>
 	</div>
 
  </BODY>
