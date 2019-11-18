@@ -1,0 +1,34 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<TITLE> Кількість заданих слів у тексті </TITLE>
+ 	<script language="JavaScript">
+ 		function numword(obj){
+ 			var h=obj.data.value
+ 			var s=obj.textin.value
+ 			s=' '+s+' '
+ 			h=' '+h+' '
+ 			var m=h.length
+ 			var res=0
+ 			var i=0
+ 			while (i <= s.length-1){
+ 				ch=s.substr(i,m)
+ 				if (ch==h) { res+=l ; i = i+m-1 }else{ i++ }
+ 			}
+ 			obj.result.value=res
+ 		}
+ 	</script>
+ </HEAD>
+ <BODY bgcolor="#FFFFCC">
+ 	<h4> Кількість слів у тексті </h4>
+ 	<FORM name="form1">
+ 		Введіть текст:<br>
+ 		<textarea name="textin" rows=4 cols=20></textarea><hr>
+ 		Введіть слово: <input type="text" name="data" size="8"><hr>
+ 		<input type="button" value="Обчислити"
+ 		onClick="numword(form1)"><hr>
+ 		Кількість слів у тексті: <input type="text" name="result" size=8><hr>
+ 		<input type="reset" value="Скасувати">
+ 	</FORM>
+ </BODY>
+</HTML> 

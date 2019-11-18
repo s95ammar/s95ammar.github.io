@@ -1,0 +1,34 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script language="JavaScript">
+		function check(input) {
+			var ok = true;
+			for (var i = 0; i < input.length; i++) {
+				var chr = input.charAt(i);
+				var found = false;
+				for (var j = 1; j < check.length; j++) {
+					if (chr == check[j]) found = true;
+				}
+				if (!found) ok = false;
+			}
+			return ok;
+		}
+		function test(input) {
+			if (!check(input, "1", "2", "3", "4",
+				"5", "6", "7", "8", "9", "0", "/", "-", " ")) {
+				alert("Номер не коректний.");
+		} else {
+			alert("Номер коректний!");
+		}
+	}
+</script>
+</head>
+<body>
+	<form>Номер:
+		<input type="text" name="telephone" value="">
+		<input type="button" value="Перевірити"
+		onClick="test(this.form.telephone.value)">
+	</form>
+</body>
+</html> 

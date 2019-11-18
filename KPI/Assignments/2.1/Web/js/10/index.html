@@ -1,0 +1,88 @@
+ <HTML>
+ <HEAD>
+ 	<meta charset="utf-8">
+ 	<title>Web lab 4.10</title>
+	<script>
+		
+		function calcWords(text) {
+			document.getElementById("span_word_count").innerHTML = text.split(" ").length
+		}
+
+		function replaceWords(text, oldWord, newWord) {
+			var words = text.split(" ")
+			var newText = ""
+			for (var i = 0; i < words.length; i++) {
+				if (words[i] == oldWord) {
+					words[i] = newWord
+				}
+				newText += words[i]
+				if (i != words.length -1) newText+= " "
+
+			}
+			document.getElementById("textarea").value = newText
+		}
+
+		function trimAndShow(text) {
+			document.getElementById("textarea").value = getTrimmedText(text)
+		}
+
+		function getTrimmedText(text) {
+			var textArr = text.split(" ")
+			console.log(textArr)
+			var trimmedText = ""
+			for (var i = 0; i < textArr.length; i++) {
+				if (textArr[i] != "") {
+					console.log(i + ", " + (textArr[i]))
+					trimmedText += textArr[i]
+					console.log(trimmedText + ", " + i + ", " + (i != textArr.length - 1) + ", " + (textArr[i + 1] != "") +
+						", [i+1] = '" + textArr[i + 1] + "'")
+
+				}
+				// if (not last word && next word isn't blank && not first word/space to be added)
+				if ((i != textArr.length - 1) && (textArr[i + 1] != "") && trimmedText.length > 0)
+				trimmedText+= " "
+				console.log(trimmedText)
+
+			}
+			return trimmedText
+		}
+
+		function setCharAt(str, index, chr) {
+   			if(index > str.length-1) return str;
+  			return str.substr(0,index) + chr + str.substr(index+1);
+}
+
+
+	</script>
+
+ </HEAD>
+ <BODY>
+	<h3>
+		<a href="../..">back</a>
+		<a href="listing1.html">listing1</a>
+		<a href="listing2.html">listing2</a>
+	</h3>
+
+	<div>
+		<h4>1. Word count. 2. Word replacement. 3. Trimming paragraph</h4>
+		<form name="form_words">
+			<textarea name="textarea" id="textarea"></textarea>
+			<br>
+			<br>
+			<input type="button" value="Calculate words" onclick="calcWords(form_words.textarea.value)">
+			<span>Number or words: </span><span id="span_word_count"></span>
+			<br>
+			<br>
+			<input type="text" name="old_word" placeholder="Old word" size=5>
+			<input type="text" name="new_word" placeholder="New word" size=5>
+			<input type="button" value="Replace Words" onclick="replaceWords(form_words.textarea.value, form_words.old_word.value, form_words.new_word.value)">
+			<br>
+			<br>
+			<input type="button" value="Trim" onclick="trimAndShow(form_words.textarea.value)">
+		</form>
+
+		
+	</div>
+
+ </BODY>
+</HTML> 
