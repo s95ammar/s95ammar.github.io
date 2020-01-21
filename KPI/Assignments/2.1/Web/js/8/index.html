@@ -15,14 +15,26 @@
 
 		function calculateWinnersAmount() {
 			var amount = 0
-			var ticketFirstNumber = 0
+			var ticketFirstNumber = 1
 			var ticketLastNumber = 999999			
-			for (var i = ticketFirstNumber; i < ticketLastNumber; i++) {
-				var firstThree = i.toString().substring(0, 3)
-				var lastThree = i.toString().substring(3, 6)
+			for (var i = ticketFirstNumber; i <= ticketLastNumber; i++) {
+				currentTicketNumberString = getSixDigitStringOf(i)
+				var firstThree = currentTicketNumberString.substring(0, 3)
+				var lastThree = currentTicketNumberString.substring(3, 6)
 				if (getSumOfSubnumbers(firstThree) == getSumOfSubnumbers(lastThree)) amount++
 			}
 			document.getElementById("span_number_of_winners").innerHTML = amount
+		}
+
+		function getSixDigitStringOf(number) {
+			var numberLength = number.toString().length
+			var sixDigitNumber = ""
+			if (numberLength < 6) {
+				for (i = 0; i < 6 - numberLength; i++) sixDigitNumber += "0";
+				sixDigitNumber += number.toString()
+				return sixDigitNumber
+			}
+			return number.toString()
 		}
 
 		function getSumOfSubnumbers(numberString) {
